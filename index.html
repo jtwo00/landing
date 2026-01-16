@@ -30,6 +30,7 @@
       align-items: center;
       color: #fff;
       box-shadow: 0 30px 80px rgba(0,0,0,.45);
+  overflow: hidden;
     }
 
     .hero-text { flex: 1; }
@@ -275,6 +276,67 @@
       .steps { flex-direction: column; }
       .benefits { grid-template-columns: 1fr; }
     }
+
+/* ===== HERO CTA 리디자인 ===== */
+.hero-btns {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.hero-btns a {
+  min-width: 180px;
+  padding: 16px 26px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  box-sizing: border-box;
+}
+
+/* 무료 상담 신청 (상담 신청 버튼과 동일 계열) */
+.btn-call {
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  color: #fff;
+}
+
+/* 카카오톡 상담 (카카오 공식 느낌) */
+.btn-kakao {
+  background: #FEE500;
+  color: #191919;
+}
+
+/* 모바일 중앙 정렬 */
+@media (max-width: 768px) {
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-btns a {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+
+/* 모바일 중앙 정렬 */
+@media (max-width: 768px) {
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-btns a {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -307,7 +369,7 @@
       <div class="benefits">
         <div class="benefit">
           <h3>현금 지원</h3>
-          <p>최소 50만원 +α<br>설치 완료 후 1~2일 이내 지급</p>
+          <p>최소 50만원 최대130만원<br>설치 완료 후 1~2일 이내 지급</p>
         </div>
         <div class="benefit">
           <h3>유심 혜택</h3>
@@ -416,7 +478,7 @@
     btn.innerText = "전송 중...";
 
     // 즉시 알림 표시
-    alert("상담 신청이 완료되었습니다.\n영업시간 내 빠르게 연락드리겠습니다 😊");
+    alert("상담 신청이 완료되었습니다.\n빠르게 연락드리겠습니다 😊");
 
     // 혹시 모를 재전송 방지
     setTimeout(() => {
@@ -430,4 +492,3 @@
 </script>
 </body>
 </html>
-
