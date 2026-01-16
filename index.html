@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>인터넷 · TV 신규가입 상담</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
@@ -18,50 +19,7 @@
       margin: 40px auto;
       padding: 20px;
     }
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    padding: 0;
-    overflow: hidden;
-  }
 
-  .hero-img {
-    order: -1;
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
-  }
-
-  .hero-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 0;
-  }
-
-  .hero-text {
-    padding: 28px 22px 32px;
-  }
-
-  .hero-btns {
-    flex-direction: column;
-  }
-
-  .btn {
-    width: 100%;
-  }
-}
-.hero-img,
-.hero-img img {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  max-width: 100% !important;
-  height: auto !important;
-}
     /* ===== HERO ===== */
     .hero {
       background: linear-gradient(135deg, #0b1020, #020617);
@@ -139,8 +97,6 @@
       width: 100%;
       border-radius: 16px;
       display: block;
-
-
     }
 
     /* ===== 섹션 공통 ===== */
@@ -331,17 +287,17 @@
         <p>
           타업체 128만원 · 150만원 지원에 현혹되지 마세요.<br>
           인터넷 · TV · 유심변경 또한 최고요금제 기준입니다.<br><br>
-          우리는 <strong>최소 요금제로 최대 지원</strong>,<br>
+          저희는 <strong>최소 요금제로 최대 지원</strong>,<br>
           <strong>마진보다 신뢰</strong>를 선택합니다.
         </p>
         <div class="hero-btns">
           <a href="#form" class="btn btn-call">무료 상담 신청</a>
-          <a href="https://pf.kakao.com/_Nxoawn" target="_blank" class="btn btn-kakao">카카오톡 상담</a>
+          <a href="https://pf.kakao.com/_Nxoawn/chat" target="_blank" class="btn btn-kakao">카카오톡 상담</a>
         </div>
       </div>
       <div class="hero-img">
-     <img src="jtwo.png" alt="인터넷 TV 상담 이미지">
-
+        <img src="https://jtwo00.github.io/landing/jtwo.png" alt="인터넷 TV 상담 이미지">
+</div>
       </div>
     </section>
 
@@ -396,7 +352,7 @@
 
     <!-- FAQ -->
     <section>
-      <h2>자주 묻는 질문(클릭)</h2>
+      <h2>자주 묻는 질문</h2>
       <div class="faq-item">
         <strong>Q. 상담만 받아도 되나요?</strong>
         <span>A. 네, 가입은 선택 사항입니다.</span>
@@ -407,23 +363,34 @@
       </div>
     </section>
 
-    <!-- FORM -->
-    <section class="form-box" id="form">
-      <h2>상담 신청</h2>
-      <form id="consultForm" novalidate>
-        <div class="field">
-          <label>이름</label>
-          <input type="text" name="name" placeholder="홍길동" required>
-        </div>
-        <div class="field">
-          <label>연락처</label>
-          <input type="tel" name="phone"
-  placeholder="01012345678 또는 010-1234-5678"
-  required>
-        </div>
-        <button type="submit" class="submit">상담 신청</button>
-        <div class="notice">설치 완료 후 1~2일 이내 현금 지원 지급</div>
-      </form>
+    <form 
+  method="POST"
+  action="https://script.google.com/macros/s/AKfycbxUSfbeBMdhobKNqNIMt64IERZ48SRE9QQ5V0ltru11OzAZrPVU8AxiwDNQZUb1PBFZ/exec"
+  target="hidden_iframe"
+  onsubmit="handleSubmit()"
+>
+
+  <div class="field">
+    <label>이름</label>
+    <input type="text" name="name" placeholder="홍길동" required>
+  </div>
+
+  <div class="field">
+    <label>연락처</label>
+    <input type="tel" name="phone"
+      placeholder="01012345678 또는 010-1234-5678"
+      required>
+  </div>
+
+  <button type="submit" class="submit">상담 신청</button>
+
+  <div class="notice">고객님의 정보는 상담 목적으로만 이용됩니다.</div>
+</form>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+
+
     </section>
 
     <div class="footer">© 고객을 남기는 정직한 상담</div>
@@ -438,11 +405,20 @@
         span.style.display = span.style.display === 'block' ? 'none' : 'block';
       });
     });
-  </script>
+</script>
+<script>
+  let submitted = false;
+
+  function handleSubmit() {
+    submitted = true;
+  }
+
+  document.getElementById("hidden_iframe").addEventListener("load", function () {
+    if (submitted) {
+      alert("상담 신청이 완료되었습니다.\n영업시간 내 빠르게 연락드리겠습니다 😊");
+      submitted = false;
+    }
+  });
+</script>
 </body>
 </html>
-
-
-
-
-
