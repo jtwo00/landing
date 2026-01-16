@@ -367,7 +367,7 @@
   method="POST"
   action="https://script.google.com/macros/s/AKfycbxUSfbeBMdhobKNqNIMt64IERZ48SRE9QQ5V0ltru11OzAZrPVU8AxiwDNQZUb1PBFZ/exec"
   target="hidden_iframe"
-  onsubmit="handleSubmit()"
+  onsubmit="return handleSubmit(this)"
 >
 
   <div class="field">
@@ -382,7 +382,7 @@
       required>
   </div>
 
-  <button type="submit" class="submit">상담 신청</button>
+  <button type="submit" class="submit" id="submitBtn">상담 신청</button>
 
   <div class="notice">고객님의 정보는 상담 목적으로만 이용됩니다.</div>
 </form>
@@ -407,18 +407,25 @@
     });
 </script>
 <script>
-  let submitted = false;
+  function handleSubmit(form) {
+    const btn = document.getElementById("submitBtn");
 
-  function handleSubmit() {
-    submitted = true;
+    // 버튼 즉시 비활성화 (중복 클릭 방지)
+    btn.disabled = true;
+    btn.innerText = "전송 중...";
+
+    // 즉시 알림 표시
+    alert("상담 신청이 완료되었습니다.\n영업시간 내 빠르게 연락드리겠습니다 😊");
+
+    // 혹시 모를 재전송 방지
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerText = "상담 신청";
+      form.reset();
+    }, 3000);
+
+    return true;
   }
-
-  document.getElementById("hidden_iframe").addEventListener("load", function () {
-    if (submitted) {
-      alert("상담 신청이 완료되었습니다.\n영업시간 내 빠르게 연락드리겠습니다 😊");
-      submitted = false;
-    }
-  });
 </script>
 </body>
 </html>
